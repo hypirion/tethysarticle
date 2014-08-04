@@ -1,0 +1,200 @@
+%% config.tex
+%% Copyright 2014 Jean Niklas L'orange
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is Jean Niklas L'orange.
+%
+% This work consists of the files Makefile, thesis.tex, config.tex and
+% fb/front.tex.
+
+%% Layout
+\usepackage[top=3cm]{geometry}    % Use geometry sizes for margins
+\usepackage{mparhack}             % Fix margins
+\usepackage[titles]{tocloft}      % For more control of TOC
+
+%% Fix spacing between chapters, sections, subsections
+\setlength{\cftbeforechapskip}{0pt}
+\setlength{\cftbeforesecskip}{-10pt}
+\setlength{\cftbeforesubsecskip}{-10pt}
+
+%% Fonts and input encoding
+\usepackage[utf8]{inputenc}     % Fix input encoding (ish)
+
+% \usepackage{tgpagella}        % TeX Gyre Pagella as main font
+% \usepackage[scaled]{beramono} % Correctly scaled (?) Bera Mono as monospace
+
+% Use Bitstream charter as main font
+\usepackage[charter, uppercase=upright]{mathdesign}
+\usepackage{eulervm}          % Use eulervm for beautiful math fonts
+\newcommand{\semibold}{\fontseries{sb}\selectfont}
+\usepackage[T1]{fontenc}      % Correct font encoding (T1)
+\usepackage{textcomp}         % Fix error messages that fonts are swapped out
+
+%% Header and footer setup
+
+\usepackage{fancyhdr} % Nice-looking headers
+\pagestyle{fancy}
+
+%% fancyhdr setup
+\fancyfoot{}
+\cfoot{}
+\fancyhead{}
+\fancyhead[RO,LE]{\thepage}
+\fancyhead[RE]{\textit{Chapter \thechapter: \leftmark}}
+\fancyhead[LO]{\textit{\rightmark}}
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\quad#1}{}}
+\setlength{\headheight}{15pt}
+
+%% Citation and Bibliography selections.
+\usepackage[citestyle=numeric,bibstyle=numeric,firstinits=true,backend=biber,%
+  maxcitenames=2,mincitenames=1,maxbibnames=20,minbibnames=20,sorting=none,%
+  urldate=long]{biblatex}
+
+%% For a more visually pleasing layout (comment to save space)
+\setlength{\parskip}{\bigskipamount}
+\setlength{\parindent}{0pt}
+
+%% Misc. packages
+\usepackage{tabularx}                    % Better tabular
+\usepackage{caption}                     % Better captions
+\usepackage{chngcntr}                    % Change counter for listings
+\usepackage{subcaption}                  % Add subcaptions
+\usepackage{wrapfig}                     % Add wrapfigs
+\usepackage{color}                       % Add in color (by name)
+\usepackage[usenames,dvipsnames]{xcolor} % Many more color names here
+
+\captionsetup{
+  figurewithin=chapter,
+  tablewithin=chapter
+}
+
+%% Links in the PDF
+\definecolor{webgreen}{rgb}{0,.5,0} % Web green
+\definecolor{webbrown}{rgb}{.6,0,0} % Web brown
+\definecolor{solarizedblue}{HTML}{268BD2}
+
+\newcommand{\cvar}[1]{\textit{#1}}
+
+\usepackage{hyperref}
+\hypersetup{
+    %draft, % Smart to add so that one avoids sending the wrong PDF :). Tick off
+            % when sending the real deal.
+    colorlinks=true, linktocpage=true, pdfstartpage=1, pdfstartview=FitV,
+    breaklinks=true, pdfpagemode=UseNone, pageanchor=true,
+    pdfpagemode=UseOutlines,plainpages=false, bookmarksnumbered,
+    bookmarksopen=true, bookmarksopenlevel=1, hypertexnames=true,
+    pdfhighlight=/O,
+    urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webgreen,
+    pdftitle={\myTitle},
+    pdfauthor={\textcopyright\ \myShortname, \myUni, \myDept},
+    pdfsubject={\myProject},
+}
+
+%% Listing packages
+
+%%% NB: REQUIRES pygments (python-pygments) installed to work.
+\usepackage[section]{minted}        % Minted, good pygments wrapper
+\usemintedstyle{colorful}           % Mintedstyle
+
+\usepackage{algpseudocode}
+\algrenewcommand\alglinenumber[1]{\scriptsize #1\quad}
+
+% define ruled float, but with naming at bottom. Used for algorithms in
+% listings.
+\makeatletter
+\newcommand\fs@plainruled{\def\@fs@cfont{\rmfamily}\let\@fs@capt\floatc@plain%
+  \def\@fs@pre{\hrule\kern2pt}%
+  \def\@fs@mid{\kern2pt\hrule\vspace\abovecaptionskip\relax}%
+  \def\@fs@post{}%
+  \let\@fs@iftopcapt\iffalse}
+
+\newcommand\floatc@bottomruled[2]{{\@fs@cfont #1} #2\par}
+\newcommand\fs@bottomruled{\def\@fs@cfont{\bfseries}\let\@fs@capt\floatc@bottomruled
+  \def\@fs@pre{\hrule height.8pt depth0pt \kern2pt}%
+  \def\@fs@post{\kern2pt\hrule\relax}%
+  \def\@fs@mid{\kern2pt\hrule\kern2pt}%
+  \let\@fs@iftopcapt\iffalse}
+\makeatother
+
+%% New environment for algorithms
+\newenvironment{alglisting}[1][ht]
+  {\floatstyle{plainruled}%
+\restylefloat{listing}%
+   \begin{listing}[#1]
+  }{\end{listing}}
+\counterwithin{listing}{chapter}
+
+%% Math packages
+\usepackage{amsmath}          % Symbols, math modes, etc.
+\usepackage{mathtools}        % Typesetting and fix bugs in amssymb
+\usepackage{amsthm}           % For theorems
+
+\usepackage{xspace}   % Fix space between macros.
+\usepackage{fixltx2e} % General fix on misc. other fails
+
+%% Setting up chapter
+\usepackage{titlesec}
+\titlespacing\section{0pt}{0pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+\titleformat{\chapter}[display]
+{\normalfont\filcenter\semibold}
+{\sc{\Large \chaptertitlename\ \thechapter}}
+{0pt}
+{\LARGE}
+
+%% By default, add fig/ as a place to look for graphics.
+\usepackage{graphicx}
+\graphicspath{{fig/}}
+
+%% Add in \TODO command, for inline TODOS.
+\newcommand{\TODO}[1]{\textcolor{red}{\textbf{TODO:} #1}}
+
+%% Add in \O command, for use within math environments
+\renewcommand{\O}{\mathcal{O}}
+
+%% Clear left page
+\newcommand*\skiponepage{%
+  \clearpage
+  \thispagestyle{empty}
+  \hbox{}\newpage
+}
+
+%% Setting up alllistof
+
+\providecommand\phantomsection{}
+\renewcommand\listoflistingscaption{List of Listings}
+
+\makeatletter
+\newcommand\AllLists{%
+  \begingroup%
+  \clearpage
+  \let\clearpage\relax
+  \titleformat{\chapter}[display]%
+  {\normalfont\filcenter\semibold}%
+  {\sc{\Large \chaptertitlename\ \thechapter}}%
+  {0pt}%
+  {\Large}%
+  [\vspace{-16pt}\rule{\linewidth}{0.4pt}]%
+  \titlespacing\chapter{0pt}{0pt}{8pt}%
+  \phantomsection
+  \addcontentsline{toc}{chapter}{List of Tables}%
+  \listoftables%
+  \phantomsection
+  \addcontentsline{toc}{chapter}{List of Figures}%
+  \listoffigures%
+  \phantomsection
+  \addcontentsline{toc}{chapter}{\listoflistingscaption}%
+  \listoflistings%
+  \endgroup}
+\makeatother

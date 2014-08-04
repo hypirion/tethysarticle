@@ -1,0 +1,82 @@
+%% thesis.tex
+%% Copyright 2014 Jean Niklas L'orange
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is Jean Niklas L'orange.
+%
+% This work consists of the files Makefile, thesis.tex, config.tex and
+% fb/front.tex.
+
+\RequirePackage{fix-cm} %% Patch up incompabilities in fonts
+\documentclass[a4paper,12pt,oneside]{book}
+
+%% Project commands
+% Some of these can be empty, if so desired
+\newcommand{\myName}{My Full Name}
+\newcommand{\myShortname}{M. Y. Name}
+\newcommand{\myTitle}{My Title}
+\newcommand{\myProject}{My Project} %% I usually tend to set this to \myTitle
+\newcommand{\myDept}{My Department}
+\newcommand{\myFaculty}{My Faculty}
+\newcommand{\myUni}{My University}
+\newcommand{\myDate}{My Date}
+\newcommand{\mySupervisor}{My Supervisor}
+
+\input{config.tex}
+
+% Package lipsum for dummy text. No need to keep it unless you actually need
+% dummy text.
+\usepackage{lipsum}
+
+%% Bibliography resources. You can add more if you like to have them separated
+%% in different files.
+\addbibresource{bib/bibliography.bib}
+
+\begin{document}
+\frenchspacing
+\raggedbottom
+
+\include{fb/front}
+
+%% Abstract and acknowledgements
+\thispagestyle{plain}
+\pagenumbering{alph}
+\input{abstract}
+\skiponepage
+\input{acknowledgements}
+\skiponepage
+
+%% A list of TOCS
+\pagenumbering{roman}
+\phantomsection
+\addcontentsline{toc}{chapter}{Contents}
+\tableofcontents
+\AllLists
+\skiponepage
+
+\pagenumbering{arabic}
+\pagestyle{fancy}
+
+%% Here you insert chapters as you go
+\input{ch/intro}
+
+\cleardoublepage
+\appendix
+
+%% Here will the appendices go, if you have any. Otherwise, you can remove the
+%% two commands called above.
+
+\input{app/appendix}
+
+\printbibliography
+
+\end{document}
