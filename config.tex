@@ -22,7 +22,7 @@
 \usepackage[titles]{tocloft}      % For more control of TOC
 
 %% Fix spacing between chapters, sections, subsections
-\setlength{\cftbeforechapskip}{0pt}
+% \setlength{\cftbeforechapskip}{0pt}
 \setlength{\cftbeforesecskip}{-10pt}
 \setlength{\cftbeforesubsecskip}{-10pt}
 
@@ -49,11 +49,11 @@
 \cfoot{}
 \fancyhead{}
 \fancyhead[RO,LE]{\thepage}
-\fancyhead[RE]{\textit{Chapter \thechapter: \leftmark}}
+\fancyhead[RE]{\textit{Section \thechapter: \leftmark}}
 \fancyhead[LO]{\textit{\rightmark}}
 
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection\quad#1}{}}
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+\renewcommand{\subsectionmark}[1]{\markright{\thesubsection\quad#1}{}}
 \setlength{\headheight}{15pt}
 
 %% Citation and Bibliography selections.
@@ -75,8 +75,8 @@
 \usepackage[usenames,dvipsnames]{xcolor} % Many more color names here
 
 \captionsetup{
-  figurewithin=chapter,
-  tablewithin=chapter
+  figurewithin=section,
+  tablewithin=section
 }
 
 %% Links in the PDF
@@ -133,7 +133,7 @@
 \restylefloat{listing}%
    \begin{listing}[#1]
   }{\end{listing}}
-\counterwithin{listing}{chapter}
+\counterwithin{listing}{section}
 
 %% Math packages
 \usepackage{amsmath}          % Symbols, math modes, etc.

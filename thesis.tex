@@ -17,7 +17,7 @@
 % fb/front.tex.
 
 \RequirePackage{fix-cm} %% Patch up incompabilities in fonts
-\documentclass[a4paper,12pt,oneside]{book}
+\documentclass[a4paper,12pt,oneside]{article}
 
 %% Project commands
 % Some of these can be empty, if so desired
@@ -56,15 +56,7 @@
 \pagestyle{fancy}
 
 %% Here you insert chapters as you go
-\input{ch/intro}
-
-\cleardoublepage
-\appendix
-
-%% Here will the appendices go, if you have any. Otherwise, you can remove the
-%% two commands called above.
-
-\input{app/appendix}
+\input{sec/intro}
 
 \printbibliography
 
