@@ -162,39 +162,3 @@
 
 %% Add in \O command, for use within math environments
 \renewcommand{\O}{\mathcal{O}}
-
-%% Clear left page
-\newcommand*\skiponepage{%
-  \clearpage
-  \thispagestyle{empty}
-  \hbox{}\newpage
-}
-
-%% Setting up alllistof
-
-\providecommand\phantomsection{}
-\renewcommand\listoflistingscaption{List of Listings}
-
-\makeatletter
-\newcommand\AllLists{%
-  \begingroup%
-  \clearpage
-  \let\clearpage\relax
-  \titleformat{\chapter}[display]%
-  {\normalfont\filcenter\semibold}%
-  {\sc{\Large \chaptertitlename\ \thechapter}}%
-  {0pt}%
-  {\Large}%
-  [\vspace{-16pt}\rule{\linewidth}{0.4pt}]%
-  \titlespacing\chapter{0pt}{0pt}{8pt}%
-  \phantomsection
-  \addcontentsline{toc}{chapter}{List of Tables}%
-  \listoftables%
-  \phantomsection
-  \addcontentsline{toc}{chapter}{List of Figures}%
-  \listoffigures%
-  \phantomsection
-  \addcontentsline{toc}{chapter}{\listoflistingscaption}%
-  \listoflistings%
-  \endgroup}
-\makeatother
