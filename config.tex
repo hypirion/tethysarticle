@@ -29,15 +29,15 @@
 %% Fonts and input encoding
 \usepackage[utf8]{inputenc}     % Fix input encoding (ish)
 
-% \usepackage{tgpagella}        % TeX Gyre Pagella as main font
 % \usepackage[scaled]{beramono} % Correctly scaled (?) Bera Mono as monospace
 
 % Use Bitstream charter as main font
-\usepackage[charter, uppercase=upright]{mathdesign}
+
+\usepackage[sfdefault]{quattrocento}
 \usepackage{eulervm}          % Use eulervm for beautiful math fonts
-\newcommand{\semibold}{\fontseries{sb}\selectfont}
-\usepackage[T1]{fontenc}      % Correct font encoding (T1)
+\newcommand{\semibold}{\fontseries{bf}\selectfont}
 \usepackage{textcomp}         % Fix error messages that fonts are swapped out
+\usepackage[T1]{fontenc}      % Correct font encoding (T1)
 
 %% Header and footer setup
 
