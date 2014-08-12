@@ -19,7 +19,7 @@ LATEX = pdflatex
 BIBTEX = biber
 LATEXFLAGS = -shell-escape
 TEMPS = toc bbl blg log out lof lot lol aux pyg
-REPORT = thesis
+REPORT = article
 
 .PHONY: clean purge remake repeatedly
 .SUFFIXES: .tex .pdf
