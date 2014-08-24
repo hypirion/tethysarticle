@@ -35,11 +35,12 @@ Well, there are two things I have discovered:
 
 ## Setup
 
-You have to install both the latexmk and a boatload of LaTeX packages. I tend to
-just do
+You have to install both the latexmk and a boatload of LaTeX packages. In
+addition, if you want to use minted, you'll have to install pygments as well. I
+tend to just do
 
 ```bash
-sudo apt-get install texlive-full latexmk
+sudo apt-get install texlive-full latexmk python-pygments
 ```
 
 on Debian-based systems.
