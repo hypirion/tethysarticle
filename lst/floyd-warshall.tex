@@ -1,0 +1,26 @@
+\begin{alglisting}
+  \begin{algorithmic}[1]
+    \Function{\texttt{floyd-warshall}}{$E$}
+    \State $N \gets$ \Call{len}{$P$}
+    \State $next \gets $ \Call{int-array}{$N$, $N$}
+    \For{$i \gets 0$ \textbf{below} $N$} \Comment{Populate with infinite edges}
+      \For{$j \gets 0$ \textbf{below} $N$}
+        \State $next[i][j] \gets \infty$
+      \EndFor
+    \EndFor
+    \For{$k \gets 0$ \textbf{below} $N$}
+      \For{$i \gets 0$ \textbf{below} $N$}
+        \For{$j \gets 0$ \textbf{below} $N$}
+          \If{$E[i][k] + E[k][j] < E[i][j]$}
+            \State $E[i][j] \gets E[i][k] + E[k][j]$
+            \State $next[i][j] \gets k$
+          \EndIf
+        \EndFor
+      \EndFor
+    \EndFor
+    \State \Return $E$ \Comment{Or the next matrix if you want}
+    \EndFunction
+  \end{algorithmic}
+  \caption{Implementation of \textsc{\texttt{floyd-warshall}}.}
+  \label{lst:floyd-warshall}
+\end{alglisting}
