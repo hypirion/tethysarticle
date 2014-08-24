@@ -4,7 +4,9 @@
   <img src="fig/rock.jpg" alt="Rock"/>
 </p>
 
-Tethys Article is the LaTeX template version of Tethys Thesis for articles.
+Tethys Article is the LaTeX template version of Tethys Thesis for articles. An
+example of the template can be shown
+[here](http://hypirion.com/pdf/tethysarticle.pdf).
 
 ## Introduction
 
